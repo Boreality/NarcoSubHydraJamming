@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class NavigationScript : MonoBehaviour
 {
@@ -48,6 +49,7 @@ public class NavigationScript : MonoBehaviour
         Self.enabled = Show;
     }
 
+    [YarnCommand("move_sub")]
     void MoveSub(int Angle, float Distance)
     {
         Location += new Vector2(Mathf.Sin(Bearing),Mathf.Cos(Angle)) * Distance;
@@ -75,6 +77,7 @@ public class NavigationScript : MonoBehaviour
         Debug.Log(NewPosition);
     }
 
+    [YarnCommand("end_nav_sequence")]
     void EndSequence()
     {
         ShowHideMap(false);
@@ -89,6 +92,7 @@ public class NavigationScript : MonoBehaviour
         }
     }
 
+    [YarnCommand("start_nav_sequence")]
     void StartSequence(bool InputBearing)
     {
         ShowHideMap(true);
