@@ -37,11 +37,12 @@ public class NavigationScript : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             MoveMarker();
-        }
+        }/*
         if (Input.GetKey(KeyCode.Space))
         {
             EndSequence();
         }
+        */
         if (Input.GetKey(KeyCode.Return))
         {
             ConfirmBearingNumber();
@@ -56,7 +57,7 @@ public class NavigationScript : MonoBehaviour
     [YarnCommand("move_sub")]
     public void MoveSub(int Angle, float Distance)
     {
-        Location += new Vector2(Mathf.Sin(Bearing),Mathf.Cos(Angle)) * Distance;
+        Location += new Vector2(Mathf.Sin(Angle),Mathf.Cos(Angle)) * Distance;
         Debug.Log(Location);
         CheckIfAtTarget();
     }
