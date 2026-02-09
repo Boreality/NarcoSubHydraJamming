@@ -1,0 +1,8 @@
+﻿<Solution>
+  <Project Path="YarnSpinner.Unity.csproj" />
+  <Project Path="YarnSpinner.Unity.Editor.csproj" />
+  <Project Path="YarnSpinner.Addons.TextAnimatorIntegration.Editor.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="YarnSpinner.Addons.TextAnimatorIntegration.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+</Solution>
