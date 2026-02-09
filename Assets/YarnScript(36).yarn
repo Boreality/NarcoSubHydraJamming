@@ -1,5 +1,6 @@
 
 
+//Start of Game
 title: Day1
 ---
 <<declare $luisOpinion to 10>>
@@ -8,7 +9,6 @@ title: Day1
 
 
 <<fade_out Fade>>
-<<set_controls Player False>>
 
 2003, Brazil, 60km up the Amazon River.
 Day 1
@@ -16,8 +16,7 @@ Day 1
 //First Conversation
 Manuel: God this is a shithole..
 Manuel: I can't believe this.. I can barely move!
-Manuel was assigned to me for a mission testing the latest build of submarine.
-I don't know him, but he doesn't seem qualified for undersea life.
+Manuel was assigned to me for a transatlantic mission. Probably as a punishment, or a joke.
 Luis: My friend, we haven't left coast yet. Save it for later.
 <<fade_out Fade>>
 
@@ -25,17 +24,16 @@ We exit the river and into the Atlanic a few days after setting out from the sub
 
 In a meantime, we get to know the ship.
 <<fade_in Fade>>
-<<set_controls Player True>>
 ===
 
 
 
-
+//Learning the ship, first dialogue.
 title: ManuelTrigger
 when: $day == 1
 ---
 //tutorial
-Luis: Hey Manuel! You can use a map right?
+Luis: Hey Manuel, you can use a map right?
 Manuel: Pah! Of course not.
 Luis: Ah.
 We are going to need one of us to keep steering while the other sleeps.
@@ -65,6 +63,7 @@ Luis: Goodnight Manuel. We exit the river tomorrow.
 
 <<set $day to 2>>
 <<fade_out Fade>>
+<<set_played ControlPanel False>>
 Day 2
 <<wait 3>>
 <<fade_in Fade>>
@@ -74,12 +73,10 @@ Day 2
 
 
 
-
+//Day 2 starts with a annoying encounter.
 title: Day2NPC_PRENAV
 ---
 
-//talk to npc 
-<<set_controls Player False>>
 Manuel: Morning gavron.
 Luis: Yep.
 Luis: Where are we?
@@ -95,40 +92,39 @@ Manuel: I'm going to bed.
 Manuel: Don't wake me unless there's something good.
 Luis: Hrhm.
 Unbelievable.
-<<set_controls Player True>>
-
-
-
+<<set $gotCoordinates to true>>
+<<set_played ControlPanel False>>
 
 
 // !they go to bed
 ===
+
+
+
+
 title:Navigation
-when: $day == 1
+when: $day == 2
+when: $gotCoordinates == true
 ---
-<<set_controls Player False>>
+
 <<start_nav_sequence NavigationManager True>>
 <<set_cursor Camera False>>
-We know the engine speed. 10 kilometers per hour.
+We know the engine speed. 20 kilometers per hour.
 And we take 10 hour shifts before swapping to the next person. 
 
 If he truly did just go 90 degrees, then figuring out where we are should be easy.
-10 hours, 10 kilometers per hour. 90 degrees bearing.
+10 hours, 20 kilometers per hour. 90 degrees bearing.
   -> Confirm Marker
 <<end_nav_sequence NavigationManager>>
 <<set_cursor Camera True>>
-<<set_controls Player True>>
+
 ===
-
-
-
 
 
 title:ManuelTrigger
 when: $day == 2
 ---
-<<set_controls Player False>>
-Luis: Manuel.
+
 No response.
 Luis: Hey, Manuel. Wake up.
 Smack!
@@ -144,10 +140,14 @@ Manuel: You.. ah. Sorry. I had a very bad dream.
     Manuel: They were holding me back, I just needed to get to the Boss's office, and I knew I would make it.
 Manuel: *shudders*. 
 Manuel: Horrible.
-Luis: We're at (Coordinate), try to aim for Lisbon this time.
+Luis: We're at 300,500, try to aim for Lisbon this time.
 Luis: Goodnight.
 <<fade_out Fade>>
+<<wait 2>>
 <<set $day to 3>>
+<<set $gotCoordinates to false>>
+Day 3
+<<move_sub NavigationManager 20 100>>
 <<jump Day3>>
 <<set_played ControlPanel False>> 
 ===
@@ -158,8 +158,31 @@ title: Day3
 //mystery reveal
 
 //talk to npc 
+*Pling*
+*Pling*
+He's holding the AK47 magazine and slotting bullets in and out of magazine.
+He's dropped 2 rounds right next to your ear.
+Manuel: Good morning gavron.
+  -> Luis: Don't play with that.
+    Manuel: Too bad. 
+  -> Luis: Ever learn how to load one?
+    Manuel: You seem insistent at demeaning my skills at every possible chance.
+    Luis: How did you steer Manuel?
+  -> Luis: How did you steer Manuel?
+Manuel: Good. There is so little to do.
+Manuel: The patterns in the wall are just doing something.
+
+Manuel: I went bearing 20 at the same speed as always.
+Luis:So 20 kilometers per hour.
+Manuel: Sure.
+Luis: For 10 hours.
+Manuel: Jesus, yes.
+<<set $gotCoordinates to true>>
+<<set_played ControlPanel False>>
+
 
 // !they go to bed
+
 
 //ship running
 
@@ -170,23 +193,29 @@ title: Day3
 
 ===
 
+title:Navigation
+when: $day == 3
+when: $gotCoordinates == true
+---
+
+<<start_nav_sequence NavigationManager True>>
+<<set_cursor Camera False>>
+Alright. Hopefully we are still on track.
+  -> Confirm Marker
+<<end_nav_sequence NavigationManager>>
+<<set_cursor Camera True>>
+
+
+And Thats the game so far! 
+Thanks for playing.
+===
+
+
 title: Day4
 ---
 //Emotional conflict
 
 //talk to npc 
-*Pling*
-*Pling*
-You see Manuel sitting behind the wheel, holding the AK47 magazine and slotting bullets in and out of magazine.
-He's dropped 2 rounds right next to your ear.
-Manuel: Good morning gavron.
-  -> Luis: Don't play with that.
-  -> Luis: Ever learn how to load one?
-    Manuel: You seem insistent at demeaning my skills at every possible chance.
-    Luis: How did you steer Manuel?
-  -> Luis: How did you steer Manuel?
-Manuel: Good. There is so little to do.
-Manuel: The patterns in the wall are just doing something.
 
 // !they go to bed
 
