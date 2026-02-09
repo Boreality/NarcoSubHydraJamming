@@ -1,13 +1,9 @@
-title: Start
----
-
-<<jump Day1>>
-===
 
 
 title: Day1
 ---
 <<declare $luisOpinion to 10>>
+<<declare $day to 1>>
 <<fade_out Fade>>
 <<set_controls Player False>>
 2003, Brazil, 60km up the Amazon River.
@@ -25,8 +21,12 @@ We exit the river and into the Atlanic a few days after setting out from the sub
 
 In a meantime, we get to know the ship.
 <<fade_in Fade>>
+<<set_controls Player True>>
+===
 
-
+title: ManuelTrigger
+when: $day == 1
+---
 //tutorial
 Luis: Hey Manuel! You can use a map right?
 Manuel: Pah! Of course not.
@@ -56,11 +56,14 @@ I don't mention it out loud. It more than speaks for itself.
 
 Luis: Goodnight Manuel. We exit the river tomorrow.
 <<set_controls Player True>>
+<<set $day to 2>>
+<<fade_out Fade>>
 ===
 
 title: Day2NPC_PRENAV
 ---
-
+<<wait 3>>
+<<fade_in Fade>>
 //talk to npc 
 <<set_controls Player False>>
 Manuel: Morning gavron.
@@ -82,7 +85,8 @@ Unbelievable.
 
 // !they go to bed
 ===
-title:Day2Navigation
+title:Navigation
+when: $day == 2
 ---
 <<set_controls Player False>>
 We know the engine speed. 10 kilometers per hour.
@@ -94,7 +98,8 @@ If he truly did just go 90 degrees, then figuring out where we are should be eas
 <<set_controls Player True>>
 ===
 
-title:Day2NPC_POSTNAV
+title:ManuelTrigger
+when: $day == 2
 ---
 <<set_controls Player False>>
 Luis: Manuel.
@@ -115,8 +120,9 @@ Manuel: *shudders*.
 Manuel: Horrible.
 Luis: We're at (Coordinate), try to aim for Lisbon this time.
 Luis: Goodnight.
-<<set_controls Player True>>
-
+<<fade_out Fade>>
+<<set $day to 3>>
+<<jump Day3>>
 ===
 
 
@@ -141,8 +147,19 @@ title: Day4
 ---
 //Emotional conflict
 
-
 //talk to npc 
+*Pling*
+*Pling*
+You see Manuel sitting behind the wheel, holding the AK47 magazine and slotting bullets in and out of magazine.
+He's dropped 2 rounds right next to your ear.
+Manuel: Good morning gavron.
+  -> Luis: Don't play with that.
+  -> Luis: Ever learn how to load one?
+    Manuel: You seem insistent at demeaning my skills at every possible chance.
+    Luis: How did you steer Manuel?
+  -> Luis: How did you steer Manuel?
+Manuel: Good. There is so little to do.
+Manuel: The patterns in the wall are just doing something.
 
 // !they go to bed
 
@@ -152,18 +169,8 @@ title: Day4
 
 //bed
 
-*Pling*
-*Pling*
-You see Manuel sitting behind the wheel, holding the AK47 magazine and slotting bullets in and out of magazine.
-He's dropped 2 rounds right next to your ear.
-Manuel: Good morning gavron.
-  -> Luis: Don't play with that.
-  -> Luis: Ever learn how to load one?
-    Manuel: You seem insistent at demeaning my skills at every possible chance.
-  -> Luis: 
-  -> Luis: How did you steer Manuel?
-Manuel: Good. There is so little to do.
-Manuel: The patterns in the wall are just doing something.
+
+
 
 
 

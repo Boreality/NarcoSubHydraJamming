@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "NarcoSubHydra.slnx"
+    "dotnet.defaultSolution": "NarcoSubHydraJamming.slnx"
 }

@@ -1,6 +1,8 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class NavigationScript : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class NavigationScript : MonoBehaviour
     Vector2 StartLocation = new Vector2(200,500);
     Vector2 TargetLocation = new Vector2(783,137);
     float Speed = 200;
-    float Bearing = 45;
+    int Bearing = 45;
 
     public Canvas Self;
 
@@ -16,12 +18,13 @@ public class NavigationScript : MonoBehaviour
     public Image[] Markers;
 
     bool ShouldInputBearing = true;
-    public InputField BearingInputField;
+    public TMP_InputField BearingInputField;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Location = StartLocation;
+        BearingInputField.enabled = false;
     }
 
     // Update is called once per frame
@@ -46,9 +49,10 @@ public class NavigationScript : MonoBehaviour
         Self.enabled = Show;
     }
 
-    void MoveSub()
+    [YarnCommand("move_sub")]
+    void MoveSub(int Angle, float Distance)
     {
-        Location += new Vector2(Mathf.Sin(Bearing),Mathf.Cos(Bearing)) * Speed;
+        Location += new Vector2(Mathf.Sin(Bearing),Mathf.Cos(Angle)) * Distance;
         Debug.Log(Location);
         CheckIfAtTarget();
     }
@@ -73,20 +77,38 @@ public class NavigationScript : MonoBehaviour
         Debug.Log(NewPosition);
     }
 
+    [YarnCommand("end_nav_sequence")]
     void EndSequence()
     {
         ShowHideMap(false);
+
+        if (ShouldInputBearing)
+        {
+            MoveSub(Bearing, Speed);
+        }
+        else
+        {
+            
+        }
     }
 
+    [YarnCommand("start_nav_sequence")]
     void StartSequence(bool InputBearing)
     {
         ShowHideMap(true);
 
-        
+        if (ShouldInputBearing)
+        {
+            BearingInputField.enabled = true;
+        }
+        else
+        {
+            
+        }
     }
 
     void ConfirmBearingNumber()
     {
-        Bearing = float.Parse(BearingInputField.text);
+        Bearing = int.Parse(BearingInputField.text);
     }
 }
