@@ -2,6 +2,7 @@ using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class NavigationScript : MonoBehaviour
 {
@@ -19,11 +20,15 @@ public class NavigationScript : MonoBehaviour
     bool ShouldInputBearing = true;
     public TMP_InputField BearingInputField;
 
+    public bool StartShowingMap;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Location = StartLocation;
         BearingInputField.enabled = false;
+        ShowHideMap(StartShowingMap);
     }
 
     // Update is called once per frame
@@ -48,7 +53,8 @@ public class NavigationScript : MonoBehaviour
         Self.enabled = Show;
     }
 
-    void MoveSub(int Angle, float Distance)
+    [YarnCommand("move_sub")]
+    public void MoveSub(int Angle, float Distance)
     {
         Location += new Vector2(Mathf.Sin(Bearing),Mathf.Cos(Angle)) * Distance;
         Debug.Log(Location);
@@ -75,7 +81,8 @@ public class NavigationScript : MonoBehaviour
         Debug.Log(NewPosition);
     }
 
-    void EndSequence()
+    [YarnCommand("end_nav_sequence")]
+    public void EndSequence()
     {
         ShowHideMap(false);
         ProgressIndex++;
@@ -90,7 +97,8 @@ public class NavigationScript : MonoBehaviour
         }
     }
 
-    void StartSequence(bool InputBearing)
+    [YarnCommand("start_nav_sequence")]
+    public void StartSequence(bool InputBearing)
     {
         ShowHideMap(true);
 
