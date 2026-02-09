@@ -1,0 +1,197 @@
+title: Start
+---
+<<declare $luisOpinion to 10>>
+<<jump Day1>>
+===
+
+
+title: Day1
+---
+<<fade_out Fade>>
+2003, Brazil, 60km up the Amazon River.
+
+<<fade_in Fade>>
+//First Conversation
+Manuel: God this is a shithole..
+Manuel: I can't believe this.. I can barely move!
+Manuel was assigned to me for a mission testing the latest build of submarine.
+I don't know him, but he doesn't seem qualified for undersea life.
+Luis: My friend, we haven't left coast yet. Save it for later.
+<<fade_out Fade>>
+
+We exit the river and into the Atlanic a few days after setting out from the submarine factory in the jungle.
+
+In a meantime, we get to know the ship.
+<<fade_in Fade>>
+
+
+//tutorial
+Luis: Hey Manuel! You can use a map right?
+Manuel: Pah! Of course not.
+Luis: Ah.
+We are going to need one of us to keep steering while the other sleeps.
+If he can't do that, then..
+Luis: It's not that difficult. Here, let me show you.
+Manuel: If its not that difficult, do it yourself, gavron.
+Manuel: Unbelievable..
+Luis: ...
+Luis: You must've been real popular among your peers.
+Manuel: Listen here boy.
+He gives you a stare.
+Manuel: My past is of NO business to you.
+Manuel: Keep your nose out of it, you hear?!
+  -> Luis: What, got something to hide?
+    <<set $luisOpinion to $luisOpinion - 3>>
+    Manuel: Huff.
+  -> Luis: No problem. What is our business is navigating.
+
+//in front of map
+Luis: Our vessle is heavy, with our 2 tonne load, but with a powerful and fragile engine.
+Luis: If we make good time and navigate well, we should be in Lisbon in 12 days.
+Manuel: Yes. I have some guys there waiting for me.
+We also have a AK47 resting against the side of the bed, in case we ever get boarded.
+I don't mention it out loud. It more than speaks for itself.
+
+Luis: Goodnight Manuel. We exit the river tomorrow.
+
+===
+
+title: Day2NPC_PRENAV
+---
+
+//talk to npc 
+Manuel: Morning gavron.
+Luis: Yep.
+Luis: Where are we?
+Manuel: Further.
+Luis: You have to give me coordinates Man-
+Manuel: I told you! This navigation is impossible.
+Manuel: I went right. Just kept going right. No coordinates needed.
+Luis: No, no! Manuel! 
+Luis: We don't have enough fuel to keep doing that!
+Luis: You have to, HAVE to stay on course!
+Manuel: Pah.
+Manuel: I'm going to bed. 
+Manuel: Don't wake me unless there's something good.
+Luis: Hrhm.
+Unbelievable.
+
+// !they go to bed
+===
+title:Day2Navigation
+---
+We know the engine speed. 10 kilometers per hour.
+And we take 10 hour shifts before swapping to the next person. 
+If he truly did just go 90 degrees, then figuring out where we are should be easy.
+10 hours, 10 kilometers per hour. 90 degrees bearing.
+  -> Confirm Marker
+===
+
+title:Day2NPC_POSTNAV
+---
+Luis: Manuel.
+No response.
+Luis: Hey, Manuel. Wake up.
+Smack!
+Manuel: AH!!
+Manuel: You sly devils! You're all after me!
+Manuel: Everyone one of you- ah!
+Luis: ...
+Manuel: You.. ah. Sorry. I had a very bad dream.
+  -> Luis: Had I known that, I would've let you snooze away.
+  -> Luis: Well, what about?
+    Manuel: Hmrph.
+    Manuel: I was back at my old office. I was being grabbed by hands coming everywhere. From drawers, cracks in doors, even my own back.
+    Manuel: They were holding me back, I just needed to get to the Boss's office, and I knew I would make it.
+Manuel: *shudders*. 
+Manuel: Horrible.
+Luis: We're at (Coordinate), try to aim for Lisbon this time.
+Luis: Goodnight.
+
+===
+
+
+title: Day3
+---
+//mystery reveal
+
+//talk to npc 
+
+// !they go to bed
+
+//ship running
+
+//talk to them 
+
+//bed
+
+
+===
+
+title: Day4
+---
+//Emotional conflict
+
+
+//talk to npc 
+
+// !they go to bed
+
+//ship running
+
+//talk to them 
+
+//bed
+
+*Pling*
+*Pling*
+You see Manuel sitting behind the wheel, holding the AK47 magazine and slotting bullets in and out of magazine.
+He's dropped 2 rounds right next to your ear.
+Manuel: Good morning gavron.
+  -> Luis: Don't play with that.
+  -> Luis: Ever learn how to load one?
+    Manuel: You seem insistent at demeaning my skills at every possible chance.
+  -> Luis: 
+  -> Luis: How did you steer Manuel?
+Manuel: Good. There is so little to do.
+Manuel: The patterns in the wall are just doing something.
+
+
+
+===
+
+title: Day5
+---
+//Cocaine injesterd
+
+//talk to npc 
+
+// !they go to bed
+
+//ship running
+
+//talk to them 
+
+//bed
+
+
+===
+
+title: Day6
+---
+//SInking
+
+//talk to npc 
+
+// !they go to bed
+
+//ship running
+
+//talk to them 
+
+//bed
+
+
+===
+
+
