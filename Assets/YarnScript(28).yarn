@@ -1,13 +1,15 @@
 title: Start
 ---
-<<declare $luisOpinion to 10>>
+
 <<jump Day1>>
 ===
 
 
 title: Day1
 ---
+<<declare $luisOpinion to 10>>
 <<fade_out Fade>>
+<<set_controls Player False>>
 2003, Brazil, 60km up the Amazon River.
 
 <<fade_in Fade>>
@@ -53,13 +55,14 @@ We also have a AK47 resting against the side of the bed, in case we ever get boa
 I don't mention it out loud. It more than speaks for itself.
 
 Luis: Goodnight Manuel. We exit the river tomorrow.
-
+<<set_controls Player True>>
 ===
 
 title: Day2NPC_PRENAV
 ---
 
 //talk to npc 
+<<set_controls Player False>>
 Manuel: Morning gavron.
 Luis: Yep.
 Luis: Where are we?
@@ -75,20 +78,25 @@ Manuel: I'm going to bed.
 Manuel: Don't wake me unless there's something good.
 Luis: Hrhm.
 Unbelievable.
+<<set_controls Player True>>
 
 // !they go to bed
 ===
 title:Day2Navigation
 ---
+<<set_controls Player False>>
 We know the engine speed. 10 kilometers per hour.
 And we take 10 hour shifts before swapping to the next person. 
 If he truly did just go 90 degrees, then figuring out where we are should be easy.
 10 hours, 10 kilometers per hour. 90 degrees bearing.
   -> Confirm Marker
+
+<<set_controls Player True>>
 ===
 
 title:Day2NPC_POSTNAV
 ---
+<<set_controls Player False>>
 Luis: Manuel.
 No response.
 Luis: Hey, Manuel. Wake up.
@@ -107,6 +115,7 @@ Manuel: *shudders*.
 Manuel: Horrible.
 Luis: We're at (Coordinate), try to aim for Lisbon this time.
 Luis: Goodnight.
+<<set_controls Player True>>
 
 ===
 
