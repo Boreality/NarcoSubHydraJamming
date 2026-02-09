@@ -17,6 +17,13 @@ public class DialogueTrigger : Interactable
     public float Cooldown = 0.5f;
     private bool isOnCooldown = false;
 
+
+    [YarnCommand("set_played")]
+    public void SetPlayed(bool Played)
+    {
+        played = Played;
+    }
+
     [YarnCommand("set_repeatable")]
     public void Set_Repeatable(bool repeatable)
     {
