@@ -1,5 +1,6 @@
 ﻿using UnityEngine.UI;
 using UnityEngine;
+using Yarn.Unity;
 
 public class Mouselook : MonoBehaviour
 {
@@ -59,7 +60,7 @@ public class Mouselook : MonoBehaviour
         mouse_sensitivity = Mathf.Clamp(mouse_sensitivity, 0, 10000000);
 
     }
-    
+    [YarnCommand("set_cursor")]
     public void SetCursorLock(bool val)
     {
 

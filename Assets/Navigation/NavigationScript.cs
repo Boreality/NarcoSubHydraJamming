@@ -20,11 +20,15 @@ public class NavigationScript : MonoBehaviour
     bool ShouldInputBearing = true;
     public TMP_InputField BearingInputField;
 
+    public bool StartShowingMap;
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         Location = StartLocation;
         BearingInputField.enabled = false;
+        ShowHideMap(StartShowingMap);
     }
 
     // Update is called once per frame
@@ -50,7 +54,7 @@ public class NavigationScript : MonoBehaviour
     }
 
     [YarnCommand("move_sub")]
-    void MoveSub(int Angle, float Distance)
+    public void MoveSub(int Angle, float Distance)
     {
         Location += new Vector2(Mathf.Sin(Bearing),Mathf.Cos(Angle)) * Distance;
         Debug.Log(Location);
@@ -78,7 +82,7 @@ public class NavigationScript : MonoBehaviour
     }
 
     [YarnCommand("end_nav_sequence")]
-    void EndSequence()
+    public void EndSequence()
     {
         ShowHideMap(false);
 
@@ -93,7 +97,7 @@ public class NavigationScript : MonoBehaviour
     }
 
     [YarnCommand("start_nav_sequence")]
-    void StartSequence(bool InputBearing)
+    public void StartSequence(bool InputBearing)
     {
         ShowHideMap(true);
 
