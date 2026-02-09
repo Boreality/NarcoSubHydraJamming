@@ -33,11 +33,11 @@ public class NavigationScript : MonoBehaviour
         {
             MoveMarker();
         }
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
             EndSequence();
         }
-        if (Input.GetKey(KeyCode.Return))
+        if (Input.GetKeyDown(KeyCode.Return))
         {
             ConfirmBearingNumber();
         }
@@ -78,6 +78,7 @@ public class NavigationScript : MonoBehaviour
     void EndSequence()
     {
         ShowHideMap(false);
+        ProgressIndex++;
 
         if (ShouldInputBearing)
         {
