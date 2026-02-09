@@ -8,12 +8,15 @@ public class NavigationScript : MonoBehaviour
     Vector2 StartLocation = new Vector2(200,500);
     Vector2 TargetLocation = new Vector2(783,137);
     float Speed = 200;
-
     float Bearing = 45;
-    public Image MapImage;
+
+    public Canvas Self;
 
     int ProgressIndex = 0;
     public Image[] Markers;
+
+    bool ShouldInputBearing = true;
+    public InputField BearingInputField;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -28,11 +31,19 @@ public class NavigationScript : MonoBehaviour
         {
             MoveMarker();
         }
+        if (Input.GetKey(KeyCode.Space))
+        {
+            EndSequence();
+        }
+        if (Input.GetKey(KeyCode.Return))
+        {
+            ConfirmBearingNumber();
+        }
     }
 
     void ShowHideMap(bool Show)
     {
-        MapImage.enabled = Show;
+        Self.enabled = Show;
     }
 
     void MoveSub()
@@ -57,6 +68,25 @@ public class NavigationScript : MonoBehaviour
         Image MarkerToMove = Markers[ProgressIndex];
         Vector2 NewPosition;
 
-        NewPosition = Camera.main.ViewportToScreenPoint(Input.mousePosition);
+        NewPosition = Input.mousePosition;
+        MarkerToMove.transform.position = NewPosition;
+        Debug.Log(NewPosition);
+    }
+
+    void EndSequence()
+    {
+        ShowHideMap(false);
+    }
+
+    void StartSequence(bool InputBearing)
+    {
+        ShowHideMap(true);
+
+        
+    }
+
+    void ConfirmBearingNumber()
+    {
+        Bearing = float.Parse(BearingInputField.text);
     }
 }
