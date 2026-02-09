@@ -4,10 +4,14 @@ title: Day1
 ---
 <<declare $luisOpinion to 10>>
 <<declare $day to 1>>
+<<declare $gotCoordinates to false>>
+
+
 <<fade_out Fade>>
 <<set_controls Player False>>
-2003, Brazil, 60km up the Amazon River.
 
+2003, Brazil, 60km up the Amazon River.
+Day 1
 <<fade_in Fade>>
 //First Conversation
 Manuel: God this is a shithole..
@@ -23,6 +27,9 @@ In a meantime, we get to know the ship.
 <<fade_in Fade>>
 <<set_controls Player True>>
 ===
+
+
+
 
 title: ManuelTrigger
 when: $day == 1
@@ -55,15 +62,22 @@ We also have a AK47 resting against the side of the bed, in case we ever get boa
 I don't mention it out loud. It more than speaks for itself.
 
 Luis: Goodnight Manuel. We exit the river tomorrow.
-<<set_controls Player True>>
+
 <<set $day to 2>>
 <<fade_out Fade>>
+Day 2
+<<wait 3>>
+<<fade_in Fade>>
+<<jump Day2NPC_PRENAV>>
 ===
+
+
+
+
 
 title: Day2NPC_PRENAV
 ---
-<<wait 3>>
-<<fade_in Fade>>
+
 //talk to npc 
 <<set_controls Player False>>
 Manuel: Morning gavron.
@@ -83,20 +97,32 @@ Luis: Hrhm.
 Unbelievable.
 <<set_controls Player True>>
 
+
+
+
+
 // !they go to bed
 ===
 title:Navigation
-when: $day == 2
+when: $day == 1
 ---
 <<set_controls Player False>>
+<<start_nav_sequence NavigationManager True>>
+<<set_cursor Camera False>>
 We know the engine speed. 10 kilometers per hour.
 And we take 10 hour shifts before swapping to the next person. 
+
 If he truly did just go 90 degrees, then figuring out where we are should be easy.
 10 hours, 10 kilometers per hour. 90 degrees bearing.
   -> Confirm Marker
-
+<<end_nav_sequence NavigationManager>>
+<<set_cursor Camera True>>
 <<set_controls Player True>>
 ===
+
+
+
+
 
 title:ManuelTrigger
 when: $day == 2
@@ -123,6 +149,7 @@ Luis: Goodnight.
 <<fade_out Fade>>
 <<set $day to 3>>
 <<jump Day3>>
+<<set_played ControlPanel False>> 
 ===
 
 
