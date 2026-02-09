@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Yarn.Unity;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
+    [YarnCommand("set_controls")]
     public void SetActiveControls(bool newval)
     {
         activeControls = newval;
